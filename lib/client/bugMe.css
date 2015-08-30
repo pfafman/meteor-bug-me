@@ -1,0 +1,24 @@
+
+.bug-me-activate {
+  position: fixed;
+  width: 10px;
+  height: 15em;
+  bottom: 10%;
+  right: 0;
+}
+
+.bug-me-link {
+  position: fixed;
+  z-index: 100;
+  bottom: 10%;
+  right: -5.8em;
+  z-index: 2000;
+}
+
+button#bug-me-link {
+  padding: 0em 0.4em;
+  padding-right: 1em;
+  //opacity: 0.8;
+  background-color: rgba(50, 50, 50, 0.7);
+}
+

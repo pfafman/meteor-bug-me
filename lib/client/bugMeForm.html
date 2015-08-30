@@ -1,0 +1,40 @@
+<template name="bugMeForm">
+  
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="title" name="title" placeholder="Descriptive title of issue" type="text" class="validate">
+      <label for="title" class="active">Title</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="details" name="details" class="materialize-textarea" placeholder="Add details of problem and steps to reproduce it."></textarea>
+      <label for="details" class="active">Details</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s5">
+      <input id="os" name="os" type="text" class="validate" value="{{os}}">
+      <label for="os" class="active">OS</label>
+    </div>
+    
+    <div class="input-field col s5">
+      <input id="browser" name="browser" type="text" class="validate" value="{{browser}}">
+      <label for="browser" class="active">Browser</label>
+    </div>
+    <div class="input-field col s2">
+      <input id="version" name="version" type="text" class="validate" value="{{version}}">
+      <label for="version" class="active">Version</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4">
+      <input type="checkbox" name="cordova" id="cordova" checked="{{mobile}}" />
+      <label for="cordova">Mobile App</label>
+    </div>
+  </div>
+
+</template>
