@@ -7,6 +7,7 @@ Template.bugMeForm.onCreated ->
 
 Template.bugMeForm.onRendered ->
   console.log("History", BugMe.history)
+  @$('select').material_select();
 
 
 Template.bugMeForm.onDestroyed ->

@@ -8,6 +8,7 @@ console.log("BugMe Create") if DEBUG
   history: []
 
   location: 'lower-left'
+  offset: '-5em'
   
 
   configure: (options) ->

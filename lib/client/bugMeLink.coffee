@@ -6,27 +6,30 @@ Template.bugMeLink.onCreated ->
 
 
 Template.bugMeLink.onRendered ->
-  console.log("bugMeLink", BugMe, @)
-  location = BugMe?.location or @data?.location
+  location = @data?.location or BugMe?.location
+  console.log("bugMeLink", BugMe, @, location) if DEBUG
+  offset = @data?.offset or BugMe.offset
 
   switch location
     when 'top-left'
       BugMe.top = '15%'
-      BugMe.left = '-0.4em'
+      BugMe.left = offset
     when 'bottom-left'
       BugMe.bottom = '15%'
-      BugMe.left = '-0.4em'
+      BugMe.left = offset
     when 'top-right'
       BugMe.top = '15%'
-      BugMe.right = '-0.4em'
+      BugMe.right = offset
     when 'bottom-right'
       BugMe.bottom = '15%'
-      BugMe.right = '-0.4em'
+      BugMe.right = offset
 
 
   for key in ['left', 'right', 'top', 'bottom']
     if BugMe?[key]?
-      @$('#bug-me-link').css(key, BugMe[key])
+      @$('.bug-me-link').css(key, BugMe[key])
+
+  @$('.bug-me-link').css('display', 'block')
 
 
 
@@ -47,6 +50,7 @@ Template.bugMeLink.events
     MaterializeModal.form
       'title': 'Report Issue'
       bodyTemplate: 'bugMeForm'
+      fixedFooter: true
       callback: (yesNo, issue) ->
         if yesNo
           console.log("New Issue", issue) if DEBUG
@@ -65,7 +69,7 @@ Template.bugMeLink.events
   'mouseleave #bug-me-link': (event, tmpl) ->
     console.log("hide bug") if DEBUG
     tmpl.$(".bug-me-link").velocity
-      right: '-5.8em'
+      right: @offset or BugMe.offset
       padding: '0em 0.4em'
     ,
       duration: 250

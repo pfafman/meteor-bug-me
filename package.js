@@ -1,7 +1,7 @@
 Package.describe({
   name: "pfafman:bug-me",
-  summary: "Package that enables users to report bugs with browser data",
-  version: "0.0.1",
+  summary: "Package that enables users to report bugs with browser data included",
+  version: "0.0.1_1",
   git: "https://github.com/pfafman/meteor-bug-me.git"
 });
 
@@ -53,6 +53,4 @@ Package.on_use(function(api, where) {
 
 Package.on_test(function(api) {
   api.use("pfafman:materialize-modal", 'client');
-  api.use(['tinytest', 'test-helpers', 'coffeescript'], 'client');
-  api.add_files('modal_tests.coffee', 'client');
 });
