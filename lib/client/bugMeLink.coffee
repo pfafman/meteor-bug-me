@@ -47,23 +47,32 @@ Template.bugMeLink.events
     event.preventDefault()
     event.stopPropagation()
     console.log("show bug me form") if DEBUG
+    BugMe.hideLink()
     MaterializeModal.form
       'title': 'Report Issue'
       bodyTemplate: 'bugMeForm'
+      fullscreen: $(window).width() < 510 # or Meteor.isCordova
       fixedFooter: true
+      class: 'bug-me-modal'
       callback: (yesNo, issue) ->
         if yesNo
           console.log("New Issue", issue) if DEBUG
           if not issue.title
             Materialize.toast("Error on creating issue: title is required", 3000, 'toast-error')
+            BugMe.showLink()
           else
             console.log("New Issue", issue) if DEBUG
             issue.history = BugMe.history
             Meteor.call "insertIssue", issue, (error, rtn) ->
               if error
                 Materialize.toast("Error on creating issue: #{error.reason}", 3000, 'toast-error')
+                BugMe.showLink()
               else
                 Materialize.toast("Issue created and sent to support", 3000, 'toast-success')
+                BugMe.showLink()
+        else
+          BugMe.showLink()
+
 
 
   'mouseleave #bug-me-link': (event, tmpl) ->

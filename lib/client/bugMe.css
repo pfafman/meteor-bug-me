@@ -29,3 +29,6 @@ button#bug-me-link {
     font-size: 0.6em;
 }
 
+.modal-fixed-footer.full-screen.bug-me-modal {
+  height: 100%;
+}
