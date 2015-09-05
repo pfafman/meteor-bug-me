@@ -49,7 +49,7 @@ Template.bugMeLink.events
     console.log("show bug me form") if DEBUG
     BugMe.hideLink()
     MaterializeModal.form
-      'title': 'Report Issue'
+      'title': T9n.get('Report Issue')
       bodyTemplate: 'bugMeForm'
       fullscreen: $(window).width() < 510 # or Meteor.isCordova
       fixedFooter: true

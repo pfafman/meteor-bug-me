@@ -29,10 +29,11 @@ console.log("BugMe Create") if DEBUG
     $('.bug-me-link').show()
 
 
-Router.onRun ->
-  console.log("BugMe add history", Iron?.Location?.get(), BugMe?.history) if DEBUG
-  BugMe?.history?.push(Iron?.Location?.get())
-  $('.bug-me-link').show()
-  @next()
+if Meteor.isClient
+  Router.onRun ->
+    console.log("BugMe add history", Iron?.Location?.get(), BugMe?.history) if DEBUG
+    BugMe?.history?.push(Iron?.Location?.get())
+    BugMe?.showLink()
+    @next()
 
 

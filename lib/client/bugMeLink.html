@@ -1,7 +1,12 @@
 <template name="bugMeLink">
-  <div class="bug-me-link">
-    <button class="btn waves-effect" id="bug-me-link">
-      <i class="material-icons left">bug_report</i> Issues
-    </button>
-  </div>
+  {{#if inlineLink}}
+    <a href="" id="bug-me-link">{{t9n 'Issues'}}</a>
+  {{else}}
+    <div class="bug-me-link">
+      <button class="btn waves-effect" id="bug-me-link">
+        <i class="material-icons left">bug_report</i> {{t9n 'Issues'}}
+      </button>
+    </div>
+  {{/if}}
 </template>
+
