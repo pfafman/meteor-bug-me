@@ -1,5 +1,22 @@
 <template name="bugMeForm">
   <div class="bug-me-form">
+    {{#unless currentUser}}
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="name" name="name" type="text" class="validate">
+          <label for="name" class="">{{t9n 'Name'}}</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" name="email" type="text" class="validate">
+          <label for="email" class="">{{t9n 'Email'}}</label>
+        </div>
+      </div>
+
+    {{/unless}}
+
     <div class="row">
       <div class="input-field col s12">
         <input id="title" name="title" placeholder="Descriptive title of issue" type="text" class="validate">
@@ -25,28 +42,35 @@
       </div>
     </div>
 
-    <h5>{{t9n "Enviroment"}} <span class="sub-title">{{t9n "Do not change unless the report is from a different system"}}</span></h5>
-    <div class="row">
-      <div class="input-field col s5">
-        <input id="os" name="os" type="text" class="validate" value="{{os}}">
-        <label for="os" class="active">{{t9n 'OS'}}</label>
+    {{#if currentUser}}
+      <h5>{{t9n "Enviroment"}} <span class="sub-title">{{t9n "Do not change unless the report is from a different system"}}</span></h5>
+      <div class="row">
+        <div class="input-field col s5">
+          <input id="os" name="os" type="text" class="validate" value="{{os}}">
+          <label for="os" class="active">{{t9n 'OS'}}</label>
+        </div>
+        
+        <div class="input-field col s5">
+          <input id="browser" name="browser" type="text" class="validate" value="{{browser}}" />
+          <label for="browser" class="active">{{t9n 'Browser'}}</label>
+        </div>
+        <div class="input-field col s2">
+          <input id="version" name="version" type="text" class="validate" value="{{version}}" />
+          <label for="version" class="active">{{t9n 'Version'}}</label>
+        </div>
       </div>
-      
-      <div class="input-field col s5">
-        <input id="browser" name="browser" type="text" class="validate" value="{{browser}}">
-        <label for="browser" class="active">{{t9n 'Browser'}}</label>
-      </div>
-      <div class="input-field col s2">
-        <input id="version" name="version" type="text" class="validate" value="{{version}}">
-        <label for="version" class="active">{{t9n 'Version'}}</label>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="input-field col s4">
-        <input type="checkbox" name="cordova" id="cordova" checked="{{mobile}}" />
-        <label for="cordova">{{t9n 'Mobile App'}}</label>
+      <div class="row">
+        <div class="input-field col s4">
+          <input type="checkbox" name="cordova" id="cordova" checked="{{#if mobile}}checked{{/if}}" />
+          <label for="cordova">{{t9n 'Mobile App'}}</label>
+        </div>
       </div>
-    </div>
+    {{else}}
+      <input type="hidden" name="os" value="{{os}}" />
+      <input type="hidden" name="browser" value="{{browser}}" />
+      <input type="hidden" name="version" value="{{version}}" />
+      <input type="hidden" name="cordova" value="{{mobile}}" />
+    {{/if}}
   </div>
 </template>

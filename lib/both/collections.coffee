@@ -18,12 +18,14 @@ Meteor.methods
 
   insertIssue: (issue) ->
     user = Meteor.user()
-    throw new Meteor.Error('noLogin', T9n.get("Login Required")) unless user
+    #throw new Meteor.Error('noLogin', T9n.get("Login Required")) unless user
     throw new Meteor.Error('badData', T9n.get("No Issue?")) unless issue
 
     check(issue, Object)
 
-    issue.username = user.username
+    issue.username = user?.username
+    if user?.emails?[0]?.address
+      issue.email = user.emails?[0].address
     issue.date = new Date()
     issue.status = 'new'
 
