@@ -3,14 +3,14 @@
     {{#unless currentUser}}
       <div class="row">
         <div class="input-field col s12">
-          <input id="name" name="name" type="text" class="validate">
+          <input id="name" name="name" type="text" class="validate" required>
           <label for="name" class="">{{t9n 'Name'}}</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" name="email" type="text" class="validate">
+          <input id="email" name="email" type="email" class="validate {{#if emailError}}invalid{{/if}} {{#if emailOk}}valid{{/if}}" required>
           <label for="email" class="">{{t9n 'Email'}}</label>
         </div>
       </div>
@@ -19,14 +19,14 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <input id="title" name="title" placeholder="Descriptive title of issue" type="text" class="validate">
+        <input id="title" name="title" placeholder="Descriptive title of issue" type="text" class="validate" required>
         <label for="title" class="active">{{t9n 'Title'}}</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <textarea id="details" name="details" class="materialize-textarea" placeholder="Add details of problem and steps to reproduce it."></textarea>
+        <textarea id="details" name="details" class="materialize-textarea" placeholder="Add details of problem and steps to reproduce it." required></textarea>
         <label for="details" class="active">{{t9n 'Details'}}</label>
       </div>
     </div>

@@ -57,8 +57,13 @@ Template.bugMeLink.events
       callback: (yesNo, issue) ->
         if yesNo
           console.log("New Issue", issue) if DEBUG
+          if not Meteor.user()
+            throw new Meteor.Error('badData', T9n.get("Name Required")) if not issue.name
+            throw new Meteor.Error('badData', T9n.get("Email Required")) if not issue.email
+            throw new Meteor.Error('badData', T9n.get("Email Invalid")) if not issue.email.match(/.+@(.+){2,}\.(.+){2,}/)
           if not issue.title
             Materialize.toast("Error on creating issue: title is required", 3000, 'toast-error')
+            throw new Meteor.Error('badData', T9n.get("Title Required"))
             BugMe.showLink()
           else
             console.log("New Issue", issue) if DEBUG

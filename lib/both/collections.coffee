@@ -17,17 +17,27 @@ if Meteor.isServer
 Meteor.methods
 
   insertIssue: (issue) ->
-    user = Meteor.user()
-    #throw new Meteor.Error('noLogin', T9n.get("Login Required")) unless user
     throw new Meteor.Error('badData', T9n.get("No Issue?")) unless issue
 
+    user = Meteor.user()
+
+    if not user
+      throw new Meteor.Error('badData', T9n.get("Email Required")) unless issue.email
+      throw new Meteor.Error('badData', T9n.get("Name Required")) unless issue.name
+      throw new Meteor.Error('badData', T9n.get("Email Invalid")) if not issue.email.match(/.+@(.+){2,}\.(.+){2,}/)
+    
     check(issue, Object)
 
     issue.username = user?.username
     if user?.emails?[0]?.address
       issue.email = user.emails?[0].address
+    if user?.profile?.lastname
+      issue.name = "#{user.profile.firstname} #{user.profile.lastname}"
     issue.date = new Date()
     issue.status = 'new'
+
+    if Meteor.isServer and @BugMe.email
+      @BugMe.sendEmail(issue)
 
     MyIssues.insert(issue)
 

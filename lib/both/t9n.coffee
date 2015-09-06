@@ -12,6 +12,9 @@ en =
   'Version': 'Version'
   'Browser': 'Browser'
   "Login Required": "Login Required"
+  "Email Required": "Email Required"
+  "Email Invalid": "Email Invalid"
+  "Name Required": "Name Required"
   "No Issue?": "No Issue?"
   "No Issue Updates?": "No Issue Updates?"
   'Type': 'Type'
@@ -27,12 +30,16 @@ sk =
   'Report Issue': 'Potrebujete poradiť?'
   "Details": "Popíšte ho"
   "Title": "Pomenujte problém"
+  "Title Required": "Pomenujte problém Povinné"
   "Enviroment": "Životné prostredie"
   "Mobile App": "Mobilná App"
   "Version": "Verzia"
   "Browser": "Prehliadač"
   "Type": "Druh"
   "Login Required": "Prihlásenie Povinné"
+  "Email Required": "Email Povinné"
+  "Email Invalid": "Email Neplatná"
+  "Name Required": "Meno Povinné"
   "No Issue Updates?": "No vydanie aktualizácie?"
   "No Issue?": "Žiadny problém?"
   "bug": "ploštice"

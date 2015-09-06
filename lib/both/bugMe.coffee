@@ -29,6 +29,19 @@ console.log("BugMe Create") if DEBUG
     $('.bug-me-link').show()
 
 
+  sendEmail: (issue) =>
+    if Meteor.isServer and @email
+      subject = @subject or "New Issue"
+      message = "Issue:\n"
+      for key, val of issue
+        message += "#{key}: #{value}\n"
+      Email.send
+        to: @email
+        from: @email
+        subject:  subject
+        text: message
+
+
 if Meteor.isClient
   Router.onRun ->
     console.log("BugMe add history", Iron?.Location?.get(), BugMe?.history) if DEBUG
