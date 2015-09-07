@@ -24,6 +24,9 @@ en =
   'Issues': 'Issues'
   'Do not change unless the report is from a different system':'Do not change unless the report is from a different system'
   "OS": "Operating System"
+  'Add details of problem and steps to reproduce it.': 'Add details of problem and steps to reproduce it.'
+
+T9n?.map?("en", en)
 
 
 sk =
@@ -48,5 +51,6 @@ sk =
   "Issues": "Problémy"
   "Do not change unless the report is from a different system": "Nemeňte, ak je správa z iného systému"
   "OS": "Operačný systém"
+  'Add details of problem and steps to reproduce it.': 'Pridajte podrobnosti o probléme a kroky pre reprodukciu ju.'
   
-T9n?.map?("en", en)
+T9n?.map?("sk", sk)
