@@ -33,8 +33,17 @@ console.log("BugMe Create") if DEBUG
     if Meteor.isServer and @email
       subject = @subject or "New Issue"
       message = "Issue:\n"
-      for key, val of issue
+
+      keys = ['name', 'email', 'title', 'type', 'details']
+
+      for key in keys
+        value = issue[key]
         message += "#{key}: #{value}\n"
+
+      for key, val of issue
+        if key not in keys
+          message += "#{key}: #{value}\n"
+      
       Email.send
         to: @email
         from: @email
