@@ -38,7 +38,7 @@ sk =
   "Mobile App": "Mobilná App"
   "Version": "Verzia"
   "Browser": "Prehliadač"
-  "Type": "Druh"
+  "Type": "Typ"
   "Login Required": "Prihlásenie Povinné"
   "Email Required": "Email Povinné"
   "Email Invalid": "Email Neplatná"
