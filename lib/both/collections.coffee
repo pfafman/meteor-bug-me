@@ -1,4 +1,6 @@
 
+DEBUG = false
+
 @MyIssues = new Mongo.Collection('bugMeIssues')
 
 
@@ -34,12 +36,18 @@ Meteor.methods
     if user?.profile?.lastname
       issue.name = "#{user.profile.firstname} #{user.profile.lastname}"
     issue.date = new Date()
+    issue.updated = new Date()
     issue.status = 'new'
+    issue.site = BugMe.site or Meteor.absoluteUrl()
+    issue.siteUrl = Meteor.absoluteUrl()
 
-    if Meteor.isServer and @BugMe.email
-      @BugMe.sendEmail(issue)
+    issue.id = MyIssues.insert(issue)
 
-    MyIssues.insert(issue)
+    if Meteor.isServer and BugMe.email
+      console.log("BugMe: Send issue email to #{BugMe.email} Issue:#{issue.id}")
+      BugMe.sendEmail(issue)
+
+    
 
 
   updateIssue: (issueId, updates) ->
@@ -51,8 +59,10 @@ Meteor.methods
     check(updates, Object)
     check(issueId, String)
 
-    issue.updater = user.username
-    issue.updated = new Date()
+    updates = _.pick(updates, 'title', 'comments', 'details')
+
+    updates.updater = user.username
+    updates.updated = new Date()
 
     select =
       _id: issueId

@@ -29,26 +29,41 @@ console.log("BugMe Create") if DEBUG
     $('.bug-me-link').show()
 
 
-  sendEmail: (issue) =>
-    if Meteor.isServer and @email
-      subject = @subject or "New Issue"
-      message = "Issue:\n"
+  sendEmail: (issue) ->
+    console.log("BugMe: sendEmail?", Meteor.isServer, BugMe.email)
+    if Meteor.isServer and BugMe.email and issue
+      site = BugMe.site or Meteor.absoluteUrl()
+      subject = BugMe.subject or "New Issue on #{site}"
+      subject += " #{issue.title}"
 
-      keys = ['name', 'email', 'title', 'type', 'details']
+      message = """
+New Issue on #{site}
+_id: '#{issue.id}
+Title: #{issue.title}
+User: #{issue.username}
+Email: #{issue.email}
+Type: #{issue.type}
+Details:
+  #{issue.details}
 
-      for key in keys
-        value = issue[key]
-        message += "#{key}: #{value}\n"
+      """
 
+      message += "/n/n"
+
+      keys = ['title', 'email', 'title', 'type', 'details', 'id', 'history', 'siteUrl']
       for key, val of issue
         if key not in keys
-          message += "#{key}: #{value}\n"
-      
-      Email.send
-        to: @email
-        from: @email
-        subject:  subject
-        text: message
+          message += " #{key}: #{val}\n"
+
+      message += "\nHisotry:\n" + JSON.stringify(issue.history)
+
+      console.log("BugMe: sendEmail #{BugMe.email}: #{subject}") if DEBUG
+      Meteor.defer ->
+        Email.send
+          to: BugMe.email
+          from: BugMe.email
+          subject: subject
+          text: message
 
 
 if Meteor.isClient
