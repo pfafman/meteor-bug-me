@@ -59,7 +59,7 @@ Meteor.methods
     check(updates, Object)
     check(issueId, String)
 
-    updates = _.pick(updates, 'title', 'comments', 'details')
+    updates = _.pick(updates, 'title', 'comments', 'details', 'link', 'type', 'status', 'link')
 
     updates.updater = user.username
     updates.updated = new Date()
