@@ -55,7 +55,7 @@ Details:
         if key not in keys
           message += " #{key}: #{val}\n"
 
-      message += "\nHisotry:\n" + JSON.stringify(issue.history)
+      message += "\nHisotry:\n" + JSON.stringify(issue.history, null, 2)
 
       console.log("BugMe: sendEmail #{BugMe.email}: #{subject}") if DEBUG
       Meteor.defer ->

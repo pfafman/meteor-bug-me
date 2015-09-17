@@ -1,7 +1,7 @@
 Package.describe({
   name: "pfafman:bug-me",
   summary: "Package that enables users to report bugs with browser data included",
-  version: "0.1.3",
+  version: "0.1.4",
   git: "https://github.com/pfafman/meteor-bug-me.git"
 });
 
