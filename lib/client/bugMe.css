@@ -10,7 +10,7 @@
 .bug-me-link {
   position: fixed;
   z-index: 100;
-  //bottom: 10%;
+  /* bottom: 10%; */
   right: -5.8em;
   z-index: 2000;
   display: none;
