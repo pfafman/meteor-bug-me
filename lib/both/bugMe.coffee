@@ -40,6 +40,7 @@ console.log("BugMe Create") if DEBUG
 New Issue on #{site}
 _id: '#{issue.id}
 Title: #{issue.title}
+Name: #{issue.name}
 User: #{issue.username}
 Email: #{issue.email}
 Type: #{issue.type}
