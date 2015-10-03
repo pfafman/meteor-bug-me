@@ -1,14 +1,34 @@
 <template name="bugMeLink">
   {{#if inlineLink}}
     <a href="" id="bug-me-link">
-      {{#unless noIcon}}<i class="material-icons left">&#xE868;</i>{{/unless}}
-      {{t9n 'Issues'}}
+      {{#unless noIcon}}
+        {{#if icon}}
+          {{{icon}}}
+        {{else}}
+          <i class="material-icons left">&#xE868;</i>
+        {{/if}}
+      {{/unless}}
+      {{#if label}}
+        {{{label}}}
+      {{else}}
+        {{t9n 'Issues'}}
+      {{/if}}
     </a>
   {{else}}
     <div class="bug-me-link">
       <button class="btn waves-effect" id="bug-me-link">
-        {{#unless noIcon}}<i class="material-icons left">&#xE868;</i> {{/unless}}
-        {{t9n 'Issues'}}
+        {{#unless noIcon}}
+          {{#if icon}}
+            {{{icon}}}
+          {{else}}
+            <i class="material-icons left">&#xE868;</i>
+          {{/if}}
+        {{/unless}}
+        {{#if label}}
+          {{{label}}}
+        {{else}}
+          {{t9n 'Issues'}}
+        {{/if}}
       </button>
     </div>
   {{/if}}
