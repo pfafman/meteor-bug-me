@@ -7,7 +7,7 @@ Template.bugMeLink.onCreated ->
 
 Template.bugMeLink.onRendered ->
   location = @data?.location or BugMe?.location
-  console.log("bugMeLink", BugMe, @, location) if DEBUG
+  console.log("bugMeLink", BugMe, @data, location) if DEBUG
   offset = @data?.offset or BugMe.offset
 
   switch location
@@ -25,6 +25,7 @@ Template.bugMeLink.onRendered ->
       BugMe.right = offset
 
 
+  console.log("bugMe", location, BugMe) if DEBUG
   for key in ['left', 'right', 'top', 'bottom']
     if BugMe?[key]?
       @$('.bug-me-link').css(key, BugMe[key])

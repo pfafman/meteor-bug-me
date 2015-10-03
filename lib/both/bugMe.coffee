@@ -6,7 +6,7 @@ console.log("BugMe Create") if DEBUG
 @BugMe =
 
   history: []
-  location: 'lower-left'
+  location: 'bottom-right'
   offset: '-5em'
   
   configure: (options) ->
