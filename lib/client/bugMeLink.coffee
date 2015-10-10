@@ -55,8 +55,11 @@ Template.bugMeLink.events
       fullscreen: $(window).width() < 510 # or Meteor.isCordova
       fixedFooter: true
       class: 'bug-me-modal'
-      callback: (yesNo, issue) ->
-        if yesNo
+      callback: (error, rtn) ->
+        if error
+          Materialize.toast("Error on creating issue: #{error.reason}", 3000, 'toast-error')
+        else if rtn?.submit
+          issue = rtn.value
           console.log("New Issue", issue) if DEBUG
           if not Meteor.user()
             throw new Meteor.Error('badData', T9n.get("Name Required")) if not issue.name
