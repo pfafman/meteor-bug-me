@@ -21,7 +21,7 @@ Package.on_use(function(api, where) {
     'mongo',
     'softwarerero:accounts-t9n',
     'awatson1978:browser-detection',
-    'pfafman:materialize-modal',
+    'meteorstuff:materialize-modal',
     'iron:router'
   ], ["client", "server"]);
 
@@ -52,5 +52,5 @@ Package.on_use(function(api, where) {
 
 
 Package.on_test(function(api) {
-  api.use("pfafman:materialize-modal", 'client');
+  api.use("meteorstuff:materialize-modal", 'client');
 });
