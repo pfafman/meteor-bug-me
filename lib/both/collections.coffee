@@ -9,7 +9,7 @@ if Meteor.isServer
     # Add indexes
 
     MyIssues._ensureIndex
-      username: 1
+      userId: 1
 
 
     MyIssues._ensureIndex
@@ -30,7 +30,8 @@ Meteor.methods
     
     check(issue, Object)
 
-    issue.username = user?.username
+    issue.userId = user._id
+    issue.username = user?.username or user.profile?.firstName + " " + user.profile?.lastname
     if user?.emails?[0]?.address
       issue.email = user.emails?[0].address
     if user?.profile?.lastname
@@ -61,14 +62,14 @@ Meteor.methods
 
     updates = _.pick(updates, 'title', 'comments', 'details', 'link', 'type', 'status', 'link')
 
-    updates.updater = user.username
+    updates.updater = user?.username or user.profile?.firstName + " " + user.profile?.lastname
     updates.updated = new Date()
 
     select =
       _id: issueId
 
     if not BugMe._adminOk(user)
-      select.username = user.username
+      select.userId = user._id
 
     MyIssues.update select,
       $set: updates
@@ -85,7 +86,7 @@ Meteor.methods
       _id: issueId
 
     if not BugMe._adminOk(user)
-      select.username = user.username
+      select.userId = user._id
 
     MyIssues.remove(select)
 
