@@ -1,12 +1,12 @@
 Package.describe({
   name: "pfafman:bug-me",
   summary: "Package that enables users to report bugs with browser data included",
-  version: "0.1.8",
+  version: "0.1.10",
   git: "https://github.com/pfafman/meteor-bug-me.git"
 });
 
 Package.on_use(function(api, where) {
-  api.versionsFrom("METEOR@1.0.4");
+  //api.versionsFrom("METEOR@1.5");
 
   api.use([
     'templating',
