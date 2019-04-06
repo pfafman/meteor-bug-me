@@ -11,7 +11,7 @@ Template.bugMeForm.onCreated ->
 
 Template.bugMeForm.onRendered ->
   console.log("History", BugMe.history) if DEBUG
-  @$('select').material_select()
+  @$('select').formSelect()
 
 
 Template.bugMeForm.onDestroyed ->
