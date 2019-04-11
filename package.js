@@ -1,9 +1,13 @@
 Package.describe({
   name: "pfafman:bug-me",
   summary: "Package that enables users to report bugs with browser data included",
-  version: "0.1.10",
+  version: "0.1.11",
   git: "https://github.com/pfafman/meteor-bug-me.git"
 });
+
+// Npm.depends({
+//   'meteor-accounts-t9n' : '2.3.1'
+// });
 
 Package.on_use(function(api, where) {
   //api.versionsFrom("METEOR@1.5");
@@ -19,7 +23,7 @@ Package.on_use(function(api, where) {
     'coffeescript',
     'underscore',
     'mongo',
-    'softwarerero:accounts-t9n',
+    'softwarerero:accounts-t9n@2.1.0',
     'awatson1978:browser-detection',
     'meteorstuff:materialize-modal',
     'iron:router'
