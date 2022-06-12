@@ -9,7 +9,7 @@ Package.describe({
 //   'meteor-accounts-t9n' : '2.3.1'
 // });
 
-Package.on_use(function(api, where) {
+Package.onUse(function(api, where) {
   //api.versionsFrom("METEOR@1.5");
 
   api.use([
@@ -29,7 +29,7 @@ Package.on_use(function(api, where) {
     'iron:router'
   ], ["client", "server"]);
 
-  api.add_files([
+  api.addFiles([
     'lib/client/bugMe.css',
     'lib/client/bugMeLink.html',
     'lib/client/bugMeLink.coffee',
@@ -37,7 +37,7 @@ Package.on_use(function(api, where) {
     'lib/client/bugMeForm.coffee'
   ], 'client');
 
-  api.add_files([
+  api.addFiles([
     'lib/both/bugMe.coffee',
     'lib/both/t9n.coffee',
     'lib/both/collections.coffee'
@@ -55,6 +55,6 @@ Package.on_use(function(api, where) {
 });
 
 
-Package.on_test(function(api) {
+Package.onTest(function(api) {
   api.use("meteorstuff:materialize-modal", 'client');
 });
