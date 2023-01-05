@@ -3,8 +3,9 @@ DEBUG = false
 
 
 #@T9n = require('meteor-accounts-t9n').T9n
+#import { T9n } from 'meteor-accounts-t9n'
 
-console.log("Modal T9n", T9n) if DEBUG
+console.log("Bug Me T9n", T9n) if DEBUG
 
 en =
   'Report Issue': 'Report Issue'
